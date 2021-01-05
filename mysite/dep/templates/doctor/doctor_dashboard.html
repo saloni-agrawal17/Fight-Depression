@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+	{% block content %}
+            <div id="fh5co-course">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>What you can do</h2>
+									</div>
+			</div>
+			<div class="row">
+				{% if check %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{%url 'doctor:check_patient'%}" class="course-img" style="background-image: url('{% static "img/report-review.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{%url 'doctor:check_patient'%}">Review patient report</a></h3>
+							<p>Based on the report the doctor will able to determine the patient's current health status. </p>
+							<span><a href="{% url 'doctor:check_patient'%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="background-image: url('{% static "img/emergency.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="#">Emergency notification</a></h3>
+							<p>When the generated graph based on PHQ-9 questionaries goes above certain level then the emergency notification will be send to the doctor.     </p>
+							<span><a href="#" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+                <div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{% url 'doctor:add_receptionist'%}" class="course-img" style="background-image: url('{% static "img/receptionist.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'doctor:add_receptionist'%}">Add Receptionist</a></h3>
+							<p>Receptionist will help the patient to book the appointment.</p>
+							<span><a href="{% url 'doctor:add_receptionist'%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+                {% if telemedicine %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{%url 'doctor:check_patient_of_telemedicine'%}" class="course-img" style="background-image: url('{% static "img/telemedicine.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{%url 'doctor:check_patient_of_telemedicine'%}">Telemedicines</a></h3>
+							<p>Live video conferencing of doctor and patient with any para-medical person on the other side.</p>
+							<span><a href="{%url 'doctor:check_patient_of_telemedicine'%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{% url 'doctor:add_reports_for_telemedicine' pk=user.pk%}" class="course-img" style="background-image: url('{% static "img/receptionist.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'doctor:add_reports_for_telemedicine' pk=user.pk%}">Add Reports For Telemedicine</a></h3>
+							<p>Add Reports For Telemedicine</p>
+							<span><a href="{% url 'doctor:add_reports_for_telemedicine' pk=user.pk%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+                {% endif %}
+				{% else %}
+                <h3>Once you will be verified you will be live.You can add receptionist and  check patient.</h3>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="	background-image: url('{% static "img/report-review.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'doctor:profile_details' pk=user.pk %}">Profile Details</a></h3>
+							<p>Based on the report the doctor will able to determine the patient's current health status. </p>
+							<span><a href="{% url 'doctor:profile_details' pk=user.pk%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="background-image: url('{% static "img/report-review.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'doctor:identity_proof' pk=user.pk%}">Profile Verification</a></h3>
+							<p>Based on the report the doctor will able to determine the patient's current health status. </p>
+							<span><a href="{% url 'doctor:identity_proof' pk=user.pk%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{% url 'doctor:add_extra_information' pk=user.pk%}" class="course-img" style="background-image: url('{% static "img/report-review.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'doctor:add_extra_information' pk=user.pk%}">Start Getting patient</a></h3>
+							<p>Based on the report the doctor will able to determine the patient's current health status. </p>
+							<span><a href="{% url 'doctor:add_extra_information' pk=user.pk%}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+			</div>
+    {% endblock %}
+

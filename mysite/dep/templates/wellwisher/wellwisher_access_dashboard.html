@@ -1,0 +1,68 @@
+<html lang="es	">
+{% extends 'base.html' %}
+{% load static %}
+	<head></head>
+	<body>
+		{% block content %}
+            <div id="fh5co-course">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>What you can do</h2>
+									</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="background-image: url('{% static "img/memories.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3>Add memories</h3>
+                            <p>Add memories in form of either images and videos.</p>
+							<span><a href="images/?patient={{patient}}" class="btn btn-primary btn-sm btn-course">Images</a></span>
+                            <span><a href="videos/?patient={{patient}}" class="btn btn-primary btn-sm btn-course">Videos</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="background-image: url('{% static "img/memories.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3>View/Remove Added memories</h3>
+                            <p>Add memories in form of either images and videos.</p>
+							<span><a href="{% url 'wellwisher:list_images' %}?patient={{patient}}" class="btn btn-primary btn-sm btn-course">Images</a></span>
+                            <span><a href="{% url 'wellwisher:list_videos' %}?patient={{patient}}" class="btn btn-primary btn-sm btn-course">Videos</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="daily_activities/?patient={{patient}}" class="course-img" style="background-image: url('{% static "img/rate-activity1.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3>Rate daily activities</h3>
+							<p>To rate daily activities.</p>
+							<span><a href="daily_activities/?patient={{patient}}" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img" style="background-image: url('{% static "img/emergency.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="#">Emergency notification</a></h3>
+							<p>When the generated graph based on PHQ-9 questionaries goes above certain level then the emergency notification will be send to the doctor.     </p>
+							<span><a href="#" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			</div>
+		{% endblock %}
+	</body>
+</html>
+
+

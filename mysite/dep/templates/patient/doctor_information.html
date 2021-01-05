@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2><b>Doctor Information</b></h2>
+<p><strong>Doctor Photo:<img src="{{doctor.photo_proof.url}}" height="200" alt=""></strong></p>
+    <p><strong>Doctor Name:</strong>{{doctor.doctor_name}}</p>
+    <p><strong>Doctor Gender:</strong>{{doctor.d_sex}}</p>
+    <p><strong>Doctor State:</strong>{{doctor.state}}</p>
+    <p><strong>Doctor City:</strong>{{doctor.city}}</p>
+    <p><strong>Years of Experience:</strong>{{doctor.years_of_experience}}</p>
+    <button type="submit" class="save btn btn-default">
+        <a href="book_appointment/?doctor={{doctor}}">Book Appointment</a>
+    </button>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+
+<form method="post" id="personForm" data-cities-url="{% url 'load_cities'%}" novalidate>
+                  {% csrf_token %}
+        <table>
+          {{ form|crispy }}
+        </table>
+        <button type="submit">Save</button>
+</form>
+         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $("#id_state").change(function (){
+                var url = $("#personForm").attr("data-cities-url");
+                var stateId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                        'state': stateId
+                    },
+                success: function (data) {
+                        $("#id_city").html(data);
+                    }
+                });
+
+            });
+        </script>
+    </form>
+{% endblock %}

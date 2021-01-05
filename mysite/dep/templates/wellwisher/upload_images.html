@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+<h2><b>Add Images</b></h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+            <img src="" height="200" alt="">
+        <table>
+          {{ form|crispy }}
+        </table>
+        <button type="submit" name="final_submit">Submit</button>
+        <button type="submit" name="add_more" class="btn btn-link">Save and add Other photos</button>
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $("#id_image").change(function (){
+                const preview = document.querySelector('img');
+                const file = document.querySelector('input[type=file]').files[0];
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+
+                preview.src = reader.result;
+                }, false);
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            });
+    </script>
+    </form>
+{% endblock %}

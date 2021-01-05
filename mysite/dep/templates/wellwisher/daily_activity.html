@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Daily Activity Questions</h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for questions,choices,ques_no in data %}
+            <h4>{{ques_no}}. {{questions}}</h4>
+            {{choices}}<br>
+        {% endfor %}
+        <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+{% endblock %}
+</body>
+</html>

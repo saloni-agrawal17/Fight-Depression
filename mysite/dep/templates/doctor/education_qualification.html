@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+<div class="progress">
+        <div class="progress-bar" style="width:66%">66%</div>
+    </div>
+<h2><b>Education Qualification</b></h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <table>
+          {{ form|crispy }}
+        </table>
+        <button type="submit">Next</button>
+    </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

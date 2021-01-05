@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+
+<h2>Add your wellwisher as one of your {{friend}}</h2><hr>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {{form|crispy}}
+        <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

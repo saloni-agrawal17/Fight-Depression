@@ -1,0 +1,70 @@
+<html lang="es	">
+{% extends 'base.html' %}
+{% load static %}
+	<head></head>
+	<body>
+		{% block content %}
+        <div id="fh5co-course">
+		    <div class="container">
+			    <div class="row animate-box">
+				    <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					    <h2>What you can do</h2>
+                    </div>
+			    </div>
+			    <div class="row">
+				    <div class="col-md-6 animate-box">
+					    <div class="course">
+						    <a href="add_sessions/?doctor={{doctor}}" class="course-img" style="background-image: url('{% static "img/memories.jpg" %}')";></a>
+						<div class="desc">
+							<h3>Add Sessions</h3>
+                            <p>Add sessions!!</p>
+                            <p></p>
+							<span><a href="add_sessions/?doctor={{doctor}}" class="btn btn-primary btn-sm btn-course">Add Sessions</a></span>
+							<span><a href="change_sessions/?doctor={{doctor}}" class="btn btn-primary btn-sm btn-course">Change Sessions</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="{% url 'receptionist:patient_appointment_information'%}?doctor={{doctor}}&next=0" class="course-img" style="background-image: url('{% static "img/emergency.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3><a href="{% url 'receptionist:patient_appointment_information'%}?doctor={{doctor}}&next=0">Information about patient appointment</a></h3>
+							<p>Information about patient appointment</p>
+							<span><a href="{% url 'receptionist:patient_appointment_information'%}?doctor={{doctor}}&next=0" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+            {% if telemedicine %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="add_sessions_of_telemedicine/?doctor={{doctor}}" class="course-img" style="background-image: url('{% static "img/rate-activity1.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3>Telemedicine</h3>
+							<p>Telemedicine</p>
+							<span><a href="add_sessions_of_telemedicine/?doctor={{doctor}}" class="btn btn-primary btn-sm btn-course">Add Sessions</a></span>
+                            <span><a href="change_sessions_of_telemedicine/?doctor={{doctor}}" class="btn btn-primary btn-sm btn-course">Change Sessions</a></span>
+						</div>
+					</div>
+				</div>
+                <div class="col-md-6 animate-box">
+                    <div class="course">
+						<a href="{% url 'receptionist:patient_appointment_information'%}?doctor={{doctor}}&next=0" class="course-img" style="background-image: url('{% static "img/rate-activity1.jpg" %}')";>
+						</a>
+						<div class="desc">
+							<h3>Telemedicine Patient Information</h3>
+							<p>Information about patient Telemedicine appointment</p>
+							<span><a href="{% url 'receptionist:patient_telemedicine_appointment_information'%}?doctor={{doctor}}&next=0" class="btn btn-primary btn-sm btn-course">Take Me There</a></span>
+						</div>
+					</div>
+				</div>
+            {% endif %}
+			</div>
+		</div>
+			</div>
+		{% endblock %}
+	</body>
+</html>
+
+

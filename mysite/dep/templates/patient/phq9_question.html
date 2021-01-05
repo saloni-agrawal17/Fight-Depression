@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h2><u>PhQ-9 Questions:</u></h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for questions,options in data %}
+                 <h4>{{questions.q_id}}.{{questions.question_name}}</h4>
+                 {{options}}
+                <br>
+       {% endfor %}
+        <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+{% endblock %}
+</body>
+</html>

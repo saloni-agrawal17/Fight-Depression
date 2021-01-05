@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<aside id="fh5co-hero">
+		<div class="flexslider">
+			<ul class="slides">
+                    <li style="background-image:url( '{% static "img/doctor-background.jpg" %}')";>
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1>HELLOOOOO I AM A DOCTOR</h1>
+                                <p><a class="btn btn-primary btn-lg" href="{% url 'doctor_signup' %}">Click here to continue</a></p>
+			   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+
+                <li style="background-image:url( '{% static "img/patient-background.jpg" %}')";>
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1>It all starts with YOU!!</h1>
+								<p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'patient_signup' %}">Click here to continue</a></p>
+			   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+
+                <li style="background-image:url( '{% static "img/well-wisher-back.jpg" %}')";>
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1>HELLOOOOO I AM A WELL WISHER</h1>
+                                <p><a class="btn btn-primary btn-lg" href="{% url 'wellwishers_signup' %}">Click here to continue</a></p>
+			   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+                <li style="background-image:url( '{% static "img/img_bg_3.jpg" %}')";>
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1>I AM A RECEPTIONIST</h1>
+                                <p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'receptionist_signup' %}">Click here to continue</a></p>
+			   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+		  	</ul>
+	  	</div>
+	</aside>
+	{% endblock %}

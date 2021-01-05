@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+<div class="progress mb-3">
+        <div class="progress-bar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%">{{progress}}%</div>
+    </div>
+    <h2><b>Establishment basic details</b></h2>
+    <form method="post" id="personForm" data-location-url="{% url 'ajax_load_location'%}" novalidate>
+                  {% csrf_token %}
+        <table>
+          {{ form|crispy }}
+        </table>
+        <button type="submit">Save</button>
+    </form>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $("#id_city_of_practice").change(function (){
+                var url = $("#personForm").attr("data-location-url");
+                var cityId = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    data: {
+                        'city': cityId
+                    },
+                success: function (data) {
+                        $("#id_location").html(data);
+                    }
+                });
+
+            });
+        </script>
+    </form>
+{% endblock %}

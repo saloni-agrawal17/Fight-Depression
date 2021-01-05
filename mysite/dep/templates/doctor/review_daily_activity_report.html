@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div id="container" data-url="{% url 'doctor:chart_daily_report' %}?patient={{patient}}"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $.ajax({
+        url: $("#container").attr("data-url"),
+        dataType: 'json',
+        success: function (data) {
+            Highcharts.chart("container", data);
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Establishment Timings</h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+
+        {{form|crispy}}
+        <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+{% endblock %}

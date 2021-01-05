@@ -1,0 +1,211 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h4>Name of Doctor:{{doctor.doctor_name}}</h4>
+<h2><u>Check Doctor Documents:</u></h2>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <input type="hidden" name="form-TOTAL_FORMS" value="14" id="id_form-TOTAL_FORMS">
+        <input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS">
+        <input type="hidden" name="form-MIN_NUM_FORMS" value="0" id="id_form-MIN_NUM_FORMS">
+        <input type="hidden" name="form-MAX_NUM_FORMS" value="1000" id="id_form-MAX_NUM_FORMS">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Field Name</th>
+                <th>Field Value</th>
+                <th>Activity</th>
+            </tr>
+            <tr>
+                <td>Doctor Gender</td>
+                <td>{{doctor.gender}}</td>
+                <td>
+                Choices:<select name="form-0-choices" id="id_form-0-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Doctor Contact Number</td>
+                <td>{{doctor.contact_number}}</td>
+                <td>
+                Choices:<select name="form-0-choices" id="id_form-1-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Doctor Degree</td>
+                <td>{{doctor.degree}}</td>
+                <td>
+                Choices:<select name="form-0-choices" id="id_form-2-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Doctor Location Of Clinic</td>
+                <td>{{doctor.location_of_clinic}}</td>
+                <td>
+                Choices:<select name="form-0-choices" id="id_form-3-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>City Of Practice</td>
+                <td>{{doctor.city_of_practice}}</td>
+                <td>
+                    Choices:<select name="form-1-choices" id="id_form-4-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Locality of Practice</td>
+                <td>{{doctor.location}}</td>
+                <td>
+                    Choices:<select name="form-2-choices" id="id_form-5-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Registration Number</td>
+                <td>{{doctor.registration_number}}</td>
+                <td>
+                    Choices:<select name="form-3-choices" id="id_form-6-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Registration Council Of doctor</td>
+                <td>{{doctor.registration_council}}</td>
+                <td>
+                    Choices:<select name="form-4-choices" id="id_form-7-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>College Name in which Doctor studied</td>
+                <td>{{doctor.college_name}}</td>
+                <td>
+                    Choices:<select name="form-5-choices" id="id_form-8-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Year Of Completion</td>
+                <td>{{doctor.year_of_completion}}</td>
+                <td>
+                    Choices:<select name="form-6-choices" id="id_form-9-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Registration Year</td>
+                <td>{{doctor.registration_year}}</td>
+                <td>
+                    Choices:<select name="form-7-choices" id="id_form-10-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Choices Of Establishment</td>
+                <td>{{doctor.establishment_choice}}</td>
+                <td>
+                    Choices:<select name="form-8-choices" id="id_form-11-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Identity Proof</td>
+                <td>
+                    {% if doctor.identity_proof %}
+                        <img src="{{doctor.identity_proof.url}}" height="300px">
+                    {% else %}
+                        <h4>Image not attached.</h4>
+                    {% endif %}
+
+                </td>
+                <td>
+                    Choices:<select name="form-9-choices" id="id_form-12-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Establishment Proof</td>
+                <td>
+                    {% if doctor.establishment_proof %}
+                        <img src="{{doctor.establishment_proof.url}}" height="300px">
+                    {% else %}
+                        <h4>Image not attached.</h4>
+                    {% endif %}
+                </td>
+                <td>
+                    Choices:<select name="form-10-choices" id="id_form-13-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Medical Registration Proof</td>
+                <td>
+                    {% if doctor.medical_registration_proof %}
+                        <img src="{{doctor.medical_registration_proof.url}}" height="300px">
+                    {% else %}
+                        <h4>Image not attached.</h4>
+                    {% endif %}
+                </td>
+                <td>
+                    Choices:<select name="form-11-choices" id="id_form-14-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Years of Experience</td>
+                <td>{{doctor.years_of_experience}}</td>
+                <td>
+                    Choices:<select name="form-12-choices" id="id_form-15-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Establishment Name</td>
+                <td>{{doctor.establishment_name}}</td>
+                <td>
+                    Choices:<select name="form-13-choices" id="id_form-16-choices">
+                            <option value="accept">Accept</option>
+                            <option value="reject">Reject</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+                <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+{% endblock %}

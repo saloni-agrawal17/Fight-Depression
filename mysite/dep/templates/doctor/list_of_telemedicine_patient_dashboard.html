@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h1>List of Patients for today's appointment</h1>
+                    <h5>*Enter room no. as mentioned in the table.</h5>
+                    {% if patient_list %}
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Gender</th>
+                                <th>Occupation</th>
+                                <th>Age</th>
+                                <th>Review Report</th>
+                                <th>Click on the below link to start telemedicine</th>
+                                <th>Room No. for telemedicine</th>
+                            </tr>
+                            {% for patient in patient_list %}
+                                <tr>
+                                    <td>{{patient.0}}</td>
+                                    <td>{{patient.1}}</td>
+                                    <td>{{patient.2}}</td>
+                                    <td>{{patient.3}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link">
+                                            <a href="review_report?patient={{patient.4}}">Review</a>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-link">
+                                            <a href="#">Click Here to start telemedicine</a>
+                                        </button>
+                                    </td>
+                                    <td>{{patient.4}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <p>There are no patient for today.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

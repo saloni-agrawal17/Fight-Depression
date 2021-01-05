@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4>Appointment details with <b>Dr.{{doctor.doctor_name}}</b> on <u>{{appointment_date}}</u></h4>
+                    <h5>*noon indicate 12:00 p.m</h5>
+                    {% if appointment_info_list %}
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Slot Time</th>
+                                <th>Patient Name</th>
+                                <th>Activity</th>
+                            </tr>
+                            {% for appointment_details in appointment_info_list%}
+                            <tr>
+                                <td>{{appointment_details.slot_time}}</td>
+                                <td>{{appointment_details.patient.p_name}}</td>
+                                <td>
+                                    {% if appointment_details.is_accept %}
+                                        <b>Visited</b>
+                                    {% elif appointment_details.is_reject %}
+                                        <b>You have rejected the appointment</b>
+                                    {% elif appointment_details.patient%}
+                                        <button type="button" class="btn btn-info">
+                                            <a href="{% url 'receptionist:approve_appointment' %}
+                                            ?doctor={{doctor}}&patient={{appointment_details.patient}}&slot_time={{appointment_details.slot_time}}
+                                            &pk={{appointment_details.pk}}">Approve</a>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <a href="{% url 'receptionist:reject_appointment' %}
+                                            ?doctor={{doctor}}&patient={{appointment_details.patient}}&slot_time={{appointment_details.slot_time}}
+                                            &pk={{appointment_details.pk}}">Reject</a>
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <h4>Slots need to be added</h4>
+                    {% endif %}
+                    <button type="button" class="btn btn-link">
+                        <a href="javascript:history.go(-1)">Go Back</a>
+                    </button>
+                    <button type="button" class="btn btn-link">
+                        <a href="{% url 'receptionist:patient_appointment_information'%}?doctor={{doctor}}&next={{next}}">Next Date</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

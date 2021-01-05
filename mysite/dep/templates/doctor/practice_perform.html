@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+                <div class="progress">
+        <div class="progress-bar" style="width:66.66%">66%</div>
+    </div>
+<h2>Establishment Basic Details</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+             <fieldset>
+                 <legend>Please select any one of the following</legend>
+                 {{form|crispy}}
+             </fieldset>
+        <br><button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

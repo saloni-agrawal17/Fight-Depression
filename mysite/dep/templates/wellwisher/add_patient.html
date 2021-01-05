@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h1>Add Patient</h1>
+                    <h5>*Once you will add them notification will be send to them via email,when they will accept your request
+                    you can communicate with them.</h5><hr>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

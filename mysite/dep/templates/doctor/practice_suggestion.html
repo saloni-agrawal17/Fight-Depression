@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2><b>Establishment Proof</b></h2>
+    {% if clinic_suggestions %}
+        <ul>
+            {% for clinic in clinic_suggestions %}
+                <li>
+                    <h3>{{clinic.establishment_name}}</h3>
+                    <h4>{{clinic.location}}</h4>
+                    <h4>{{clinic.city_of_practice}}</h4>
+                </li>
+            {% endfor %}
+        </ul>
+  {% else %}
+    <p>There are no images in the library.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4>Appointment details:</h4>
+                    <h5>*You can cancel appointment only if payment is not done.Once payment is done you can't cancel appointment.</h5>
+                    <h5>*noon indicate 12:00 p.m</h5>
+                    <h5>*Enter room no. as mentioned in the table.</h5>
+                    {% if appointment_info_list_telemedicine %}
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Name Of Doctor</th>
+                                <th>Date Of Appointment</th>
+                                <th>Slot Time</th>
+                                <th>Start Telemedicine</th>
+                                <th>Room No. for telemedicine</th>
+                                <th>Payment Option</th>
+                                <th>Cancel Appointment</th>
+                            </tr>
+                            {% for appointment_details in appointment_info_list_telemedicine%}
+                            <tr>
+                                <td>{{appointment_details.doctor.doctor_name}}</td>
+                                <td>{{appointment_details.date_of_appointment}}</td>
+                                <td>{{appointment_details.slot_time}}</td>
+                                <td>
+                                {% if appointment_details.is_accept %}
+                                    <a href="#">Click over here to start your telemedicine chat with doctor.</a>
+                                {% endif %}
+                                </td>
+                                <td>{{appointment_details.patient.user.username}}</td>
+                                <td><a href="https://paytm.com/">Click here for payment</a></td>
+                                <td>
+                                    {% if not appointment_details.is_accept %}
+                                        <button type="button" class="btn btn-info">
+                                            <a href="cancel_tele_appointment/?cancel={{appointment_details.pk}}">Cancel</a>
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <h4>You don't have appointments.Click on the appointment module to book your appointment.</h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}5

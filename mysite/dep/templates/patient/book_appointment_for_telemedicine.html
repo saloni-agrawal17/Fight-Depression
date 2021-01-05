@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+                <h2>Choose Timings for Doctor's appointment</h2>
+                <h5>*noon indicates: 12:00 p.m.</h5>
+                <h5>**None indicates holiday</h5>
+                <hr>
+
+        <form method="post" id="chooseDoctorForm" data-slots-url="{% url 'patient:ajax_load_slot_timings_telemedicine' %}?doctor={{doctor}}" novalidate>
+        {% csrf_token %}
+        <table>
+            {{form|crispy}}
+        </table>
+        <button type="submit">Submit</button>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $("#id_choose_timings").change(function (){
+                var url = $("#chooseDoctorForm").attr("data-slots-url");
+                var dateId = $(this).val();
+                $.ajax({
+                    url: url,
+                    data: {
+                        'date_id': dateId
+                    },
+                success: function (data) {
+                        $("#id_slot_timings").html(data);
+                    }
+                });
+
+            });
+        </script>
+    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

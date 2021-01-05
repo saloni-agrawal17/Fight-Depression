@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h1>That's wellwisher dashboard!!!</h1>
+                    {% if patient_list %}
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Remove Patient</th>
+                                <th>Access Dashboard </th>
+                                <th>Relationship</th>
+                            </tr>
+                            {% for patient in patient_list %}
+                                <tr>
+                                    <td>{{patient.0}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger">
+                                            <a href="remove_patient?patient={{patient.3}}">Remove Patient</a>
+                                        </button>
+                                    </td>
+                                    {% if patient.1 %}
+                                        <td>
+                                            <button type="button" class="btn btn-info">
+                                                <a href="{% url 'wellwisher:well_wisher_access' patient.3%}">Access your Dashboard</a>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            {{patient.2}}
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                  {% else %}
+                    <p>You have not currently added any patient.Click on the link below to add patient.</p>
+                  {% endif %}
+                    <h5>Add Patients:
+                        <button type="button" class="btn btn-link">
+                            <a href="{% url 'wellwisher:add_patients'%}">Save and Add Next</a>
+                        </button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

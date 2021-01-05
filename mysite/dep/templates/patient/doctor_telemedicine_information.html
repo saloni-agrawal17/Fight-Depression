@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2><b>Doctor Information</b></h2>
+<p><strong>Doctor Photo:<img src="{{doctor.photo_proof.url}}" height="200" alt=""></strong></p>
+    <p><strong>Doctor Name:</strong>{{doctor.doctor_name}}</p>
+    <p><strong>Doctor Gender:</strong>{{doctor.gender}}</p>
+    <p><strong>Doctor City:</strong>{{doctor.city_of_practice}}</p>
+    <p><strong>Years of Experience:</strong>{{doctor.years_of_experience}}</p>
+    <p><strong>Doctor Degree</strong>{{doctor.degree}}</p>
+    <p><strong>Reports needed for telemedicine</strong>{{doctor.reports_needed_for_telemedicine}}</p>
+    <button type="submit" class="save btn btn-default">
+        <a href="book_appointment_for_telemedicine/?doctor={{doctor}}">Book Appointment</a>
+    </button>
+{% endblock %}

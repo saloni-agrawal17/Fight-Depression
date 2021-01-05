@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+          <div class="card mb-3">
+            <div class="card-body">
+<div class="progress">
+        <div class="progress-bar" style="width:100%">100%</div>
+    </div>
+<h2><b>Photo Proof</b></h2>
+    <form method="post" id="personForm" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% if doctor.photo_proof %}
+            <img src="{{doctor.photo_proof.url}}" height="200" alt="">
+        {% else %}
+            <img src="" height="200" alt="">
+        {% endif %}
+        <table>
+          {{ form|crispy }}
+        </table>
+        <button type="submit">Next</button>
+    </form>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $("#id_photo_proof").change(function (){
+                const preview = document.querySelector('img');
+                const file = document.querySelector('input[type=file]').files[0];
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+
+                preview.src = reader.result;
+                }, false);
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            });
+    </script>
+    </form>
+{% endblock %}

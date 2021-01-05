@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h1>That's receptionist dashboard!!!</h1>
+                    {% if doctor_list %}
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th>Doctor Name</th>
+                                <th>Remove Doctor</th>
+                                <th>Access Dashboard </th>
+                            </tr>
+                            {% for doctor in doctor_list %}
+                                <tr>
+                                    <td>{{doctor.doctor.doctor_name}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger">
+                                            <a href="remove_doctor?doctor={{doctor.doctor}}">Remove Doctor</a>
+                                        </button>
+                                    </td>
+                                    {% if doctor.is_accept %}
+                                        <td>
+                                            <button type="button" class="btn btn-warning">
+                                                <a href="{{doctor.get_absolute_url}}">Access your Dashboard</a>
+                                            </button>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        </ul>
+                    {% else %}
+                        <p>You have not currently added any doctor.Click on the link below to add doctor.</p>
+                    {% endif %}
+                    <h5>Add Doctors:
+                        <button type="button" class="btn btn-link">
+                            <a href="{% url 'receptionist:add_doctor'%}">Save and Add Next</a>
+                        </button>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
